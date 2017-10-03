@@ -88,7 +88,7 @@ public class CampaignDao {
 			else
 				return false;
 		} else if (opr.equals(ExpressionConstants.operator_contains)) {
-			if (targetingVal.toString().contains(qryVal))
+			if (targetingVal.toString().toUpperCase().contains(qryVal.toUpperCase()))
 				return true;
 			else
 				return false;

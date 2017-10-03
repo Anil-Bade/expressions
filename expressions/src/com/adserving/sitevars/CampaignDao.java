@@ -78,12 +78,12 @@ public class CampaignDao {
 			else
 				return false;
 		} else if (opr.equals(ExpressionConstants.operator_equal)) {
-			if ((dval != null && targetingVal.toString().equalsIgnoreCase(qryVal)))
+			if (targetingVal.toString().equalsIgnoreCase(qryVal))
 				return true;
 			else
 				return false;
 		} else if (opr.equals(ExpressionConstants.operator_not_equal)) {
-			if ((dval != null && dval != Double.parseDouble(qryVal)) || (!targetingVal.toString().equalsIgnoreCase(qryVal)))
+			if (!targetingVal.toString().equalsIgnoreCase(qryVal))
 				return true;
 			else
 				return false;

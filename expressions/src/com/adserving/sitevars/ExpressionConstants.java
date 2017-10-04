@@ -18,6 +18,7 @@ public class ExpressionConstants {
 	protected static final String operator_regx="regex";
 	protected static final String operator_startsWith="sw";
 	protected static final String operator_endsWith="ew";
+	protected static final String operator_matches="match";
 	
 }
  

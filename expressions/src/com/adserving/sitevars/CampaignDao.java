@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import javax.naming.CommunicationException;
 
+
 public class CampaignDao {
 	private String expression;
 	private int campaignId;
@@ -77,7 +78,7 @@ public class CampaignDao {
 				return true;
 			else
 				return false;
-		} else if (opr.equals(ExpressionConstants.operator_equal)) {
+		} else if (opr.equals(ExpressionConstants.operator_equal)||  opr.equals(ExpressionConstants.operator_matches))  {
 			if (targetingVal.toString().equalsIgnoreCase(qryVal))
 				return true;
 			else

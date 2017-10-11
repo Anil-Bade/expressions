@@ -1,6 +1,8 @@
 package com.adserving.sitevars;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +11,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.naming.CommunicationException;
-
 
 public class CampaignDao {
 	private String expression;
@@ -46,7 +47,7 @@ public class CampaignDao {
 		}
 		return false;
 	}
-
+/*targetingVal=value which comes from request qryValu=Campaign level targeting value*/
 	private boolean checkExpression(Object targetingVal, String opr, String qryVal) {
 		if(targetingVal==null)
 		{
@@ -74,7 +75,7 @@ public class CampaignDao {
 			if(val==null){
 				return false;
 			}
-			if (dval < val)
+			if (dval != null && dval < val)
 				return true;
 			else
 				return false;
@@ -116,6 +117,37 @@ public class CampaignDao {
 				 return false;
 			
 		}
+		
+		else if(opr.equals(ExpressionConstants.operator_matchesany)){
+			
+			String[] arr = targetingVal.toString().toLowerCase().split(ExpressionConstants.COMMA);
+			List<String> metaKeywordsList = new ArrayList<>();
+			
+			
+			for (int i = 0; i < arr.length; i++) {
+				
+					// arr[i].replaceAll(" ", "");
+					metaKeywordsList.addAll(Arrays.asList(arr[i].replaceAll("\\s", "").split("\\,")));
+				
+			}
+		
+			Collections.sort(metaKeywordsList);
+			int index=0;
+			for (String keyword : qryVal.split(",")) {
+
+				keyword = keyword.replaceAll("\\s", "").toLowerCase();
+				 index = Collections.binarySearch(metaKeywordsList, keyword);
+
+				index = index >= 0 ? index : -1;
+				if (index >= 0) {
+					return true;
+				}
+			}
+			return false;
+			
+			
+		}		
+		
 		else{
 			throw new WARNING_InvalidExpressionOperator("Operator " + opr + " not found ! \n this expression will be considered as false !");
 		}

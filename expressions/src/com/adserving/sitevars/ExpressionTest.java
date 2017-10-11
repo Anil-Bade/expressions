@@ -34,7 +34,7 @@ public class ExpressionTest {
 		      m.put(Integer.parseInt(s[0]), new CampaignDao(s[1],Integer.parseInt(s[0] )));
 		    }
 		}catch (Exception e) {
-			System.out.println("file not found");
+			System.out.println("file not found"+e);
 			System.exit(0);
 		}
 		  String cont="";

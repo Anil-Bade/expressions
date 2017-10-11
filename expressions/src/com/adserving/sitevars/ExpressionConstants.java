@@ -5,8 +5,8 @@ public class ExpressionConstants {
 	protected static final int val = 1;
 	protected static final String dataSeparator="##"; 
 	protected static final String equal="=";
-	protected static final String OrExpSplitter=" or ";
-	protected static final String AndExpSplitter=" and ";
+	protected static final String OrExpSplitter=" OR ";
+	protected static final String AndExpSplitter=" AND ";
 	protected static final String spaceSplitter=" ";
 	protected static final String spaceSplitterRegex=" (?=([^\"]*\"[^\"]*\")*[^\"]*$)";
 	 
@@ -19,6 +19,8 @@ public class ExpressionConstants {
 	protected static final String operator_startsWith="sw";
 	protected static final String operator_endsWith="ew";
 	protected static final String operator_matches="match";
+	protected static final String operator_matchesany="matchesAny";
+	protected static final String COMMA=",";
 	
 }
  
